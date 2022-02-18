@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>credit_details</title>
+</head>
+<style>
+html {
+height: 100%;
+}
+body  {
+  background-image: linear-gradient(to bottom right, #FFCCFF, #FFFFCC);
+}
+
+.result {
+    margin: auto;
+    width: 35%;
+    border: 2px groove;
+}
+</style>
+<body>
+<div class="predict">
+<h1 style="margin: auto; width: 35%; padding: 1%; text-align: center;">Credit Card Default Prediction </h1>
+<form action="{{ url_for('predict')}}" method="post">
+	<fieldset style="float:left;height: 390px;">
+	<p><b>Gender:</b></p>
+		<input type="radio" id="male" name="gender" value="1" required="required" />
+		<label for="male">Male</label>
+		<input type="radio" id="female" name="gender" value="2" required="required" />
+		<label for="female">Female</label>
+		<br>
+
+	<p><b>Education:</b></p>
+		<input type="radio" id="graduate_school" name="education" value="1" required="required"/>
+		<label for="graduate_school">Graduate School</label>
+		<input type="radio" id="university" name="education" value="2" required="required"/>
+		<label for="university">University</label>
+		<input type="radio" id="high_school" name="education" value="3" required="required"/>
+		<label for="high_school">High School</label>
+		<input type="radio" id="others1" name="education" value="4" required="required"/>
+		<label for="others1">Others</label>
+		<input type="radio" id="unknown" name="education" value="5" required="required"/>
+		<label for="unknown">Unknown</label>
+		<br>
+
+	<p><b>Marital Status:</b></p>
+		<input type="radio" id="married" name="marriage" value="1" required="required"/>
+		<label for="married">Married</label>
+		<input type="radio" id="single" name="marriage" value="2" required="required"/>
+		<label for="single">Single</label>
+		<input type="radio" id="others" name="marriage" value="3" required="required"/>
+		<label for="others">Others</label>
+		<br>
+
+	<label><b>Age:</b></label>
+		<input type="text" name="age" placeholder="in years" required="required" />
+		<br>
+
+	<p><b>Limit Balance:</b><br>
+			Amount of given credit in dollar (it includes individual and additional credits)</p>
+		<input type="text" name="limit_bal" placeholder="amount in dollar" required="required" />
+</fieldset>
+
+<fieldset style="height: 390px;">
+	<div class="repay_status_parent">
+			<p><b>Repayment Status:</b><br>
+			(-2=2 pay duly,-1=pay duly, 1=one month delay, 2=two months delay, … 9=delay for nine months)</p>
+
+		<div style="float:left; margin-right: 1.5em;">
+			<label for="PAY_6">April</label><br>
+			<input name="PAY_6" id="PAY_6" min="-2" max="9" type="number" value="0" required>
+		</div>
+		<div style="float:left; margin-right: 1.5em;">
+			<label for="PAY_5">May</label><br>
+			<input name="PAY_5" id="PAY_5" min="-2" max="9" type="number" value="0" required>
+		</div>
+		<div style="float:left; margin-right: 1.5em;">
+			<label for="PAY_4">June</label><br>
+			<input name="PAY_4" id="PAY_4" min="-2" max="9" type="number" value="0" required>
+		</div>
+		<div style="float:left; margin-right: 1.5em;">
+			<label for="PAY_3">July</label><br>
+			<input name="PAY_3" id="PAY_3" min="-2" max="9" type="number" value="0" required>
+		</div>
+		<div style="float:left;margin-right: 1.5em;">
+			<label for="PAY_2">August</label><br>
+			<input name="PAY_2" id="PAY_2" min="-2" max="9" type="number" value="0" required>
+		</div>
+		<div style="float:left;">
+			<label for="PAY_0">September</label><br>
+			<input name="PAY_0" id="PAY_0" min="-2" max="9" type="number" value="0" required>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="bill_amount_parent">
+		<p><b>Bill Amounts:</b> Amount of bill statements (in dollar)</p>
+			<div style="float:left; margin-right: 1.5em;">
+				<label for="BILL_AMT6">April</label><br>
+				<input name="BILL_AMT6" id="BILL_AMT6" value="0" type="text" required>
+			</div>
+			<div style="float:left; margin-right: 1.5em;">
+				<label for="BILL_AMT5">May</label><br>
+				<input name="BILL_AMT5" id="BILL_AMT5" value="0" type="text" required>
+			</div>
+			<div style="float:left; margin-right: 1.5em;">
+				<label for="BILL_AMT4">June</label><br>
+				<input name="BILL_AMT4" id="BILL_AMT4" value="0" type="text" required>
+			</div>
+			<div style="float:left; margin-right: 1.5em;">
+				<label for="BILL_AMT3">July</label><br>
+				<input name="BILL_AMT3" id="BILL_AMT3" value="0" type="text" required>
+			</div>
+			<div style="float:left;margin-right: 1.5em;">
+				<label for="BILL_AMT2">August</label><br>
+				<input name="BILL_AMT2" id="BILL_AMT2" value="0" type="text" required>
+			</div>
+			<div style="float:left;">
+				<label for="BILL_AMT1">September</label><br>
+				<input name="BILL_AMT1" id="BILL_AMT1" value="0" type="text" required>
+			</div>
+			<br>
+			<br>
+		<br>
+		<br>
+	<div class="previous_payments_parent">
+		<p><b>Previous Payments:</b> Amount of Previous Payments (in dollars)</p>
+			<div style="float:left; margin-right: 1.5em;">
+				<label for="PAY_AMT6">April</label><br>
+				<input name="PAY_AMT6" id="PAY_AMT6" value="0" type="text" required>
+			</div>
+			<div style="float:left; margin-right: 1.5em;">
+				<label for="PAY_AMT5">May</label><br>
+				<input name="PAY_AMT5" id="PAY_AMT5" value="0" type="text" required>
+			</div>
+			<div style="float:left; margin-right: 1.5em;">
+				<label for="PAY_AMT4">June</label><br>
+				<input name="PAY_AMT4" id="PAY_AMT4" value="0" type="text" required>
+			</div>
+			<div style="float:left; margin-right: 1.5em;">
+				<label for="PAY_AMT3">July</label><br>
+				<input name="PAY_AMT3" id="PAY_AMT3" value="0" type="text" required>
+			</div>
+			<div style="float:left; margin-right: 1.5em;">
+				<label for="PAY_AMT2">August</label><br>
+				<input name="PAY_AMT2" id="PAY_AMT2" value="0" type="text" required>
+			</div>
+			<div style="float:left;">
+				<label for="PAY_AMT1">September</label><br>
+				<input name="PAY_AMT1" id="PAY_AMT1" type="text" value="0" required>
+			</div>
+	</div>
+</div>
+</fieldset>
+
+	<br>
+	<div style="text-align:center;">
+		<button type="submit"><b>Predict</b></button>
+	</div>
+</form>
+
+	<br>
+	<div class="result" align="center">
+		{% if prediction_text %}
+			<h4 style="padding: 0.5%"><b>{{ prediction_text }}</b></h4>
+		{% endif %}
+	</div>
+ </div>
+
+</body>
+</html>
