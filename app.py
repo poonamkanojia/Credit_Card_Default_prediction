@@ -6,15 +6,13 @@ import logging
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
-logging.basicConfig(filename="log_ver1.log",
-                    format='%(asctime)s %(message)s',
-                    filemode='w')
+logging.basicConfig(filename="log_ver1.log",format='%(asctime)s %(message)s',filemode='w')
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
 logger.info("Code Executed Successfully")
 logger.warning("Its a Warning")
-logger.error("Error Occurred while executing the code")
+
 
 
 @app.route('/', methods=['GET', 'POST'])
