@@ -37,8 +37,11 @@ Feature Engineering : Numerical features scaled down and Categorical features en
 Model Building : In this step, first dataset Splitting is done. After that model is trained on different Machine Learning Algorithms such as:
 
 Logistic Regression
+
 Decision Tree Classifier
+
 Gradient Boosting Classifier
+
 Random Forest Classifier
 
 Model Selection : Tested all the models to check the precision, recall and Cross Validation accuracy Score.
