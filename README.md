@@ -32,7 +32,10 @@ Data Exploration : Exploring the dataset using pandas, numpy, matplotlib and sea
 
 Exploratory Data Analysis : Plotted different graphs to get more insights about dependent and independent variables/features. 
 
-Feature Engineering : Numerical features scaled down and Categorical features encoded. Model Building : In this step, first dataset Splitting is done. After that model is trained on different Machine Learning Algorithms such as:
+Feature Engineering : Numerical features scaled down and Categorical features encoded. 
+
+Model Building : In this step, first dataset Splitting is done. After that model is trained on different Machine Learning Algorithms such as:
+
 Logistic Regression
 Decision Tree Classifier
 Gradient Boosting Classifier
